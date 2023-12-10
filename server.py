@@ -14,7 +14,8 @@ from cvpartner_qa import CVPartnerQA
 
 
 ollama_url = os.environ["OLLAMA_URL"]
-ollama = Ollama(base_url=ollama_url, model="mistral")
+ollama_model = os.environ["OLLAMA_MODEL"]
+ollama = Ollama(base_url=ollama_url, model=ollama_model)
 
 embeddings = GPT4AllEmbeddings()
 
