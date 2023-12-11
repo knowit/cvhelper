@@ -8,6 +8,7 @@ The expected output should be a list of document chunks with attached metadata.
 """
 
 from typing import Iterable, Any
+from itertools import chain
 
 
 class CVSplitter:
@@ -16,6 +17,13 @@ class CVSplitter:
     def __init__(self, lang: str = "no", fallback_lang: str | None = None) -> None:
         self.lang = lang
         self.fallback_lang = fallback_lang
+    
+    def get_all_splits(self, cv):
+        global_metas = self.get_global_metadata(cv)
+        return chain(
+            self.get_project_experiences(cv, global_metas),
+            self.get_work_experiences(cv, global_metas),
+        )
 
     def get_lang_text(self, cv_component: dict[str, str] | None) -> str | None:
         if cv_component is None:
