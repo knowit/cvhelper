@@ -1,22 +1,22 @@
-from aws_cdk.core import App
+from aws_cdk import App
 from aws_cdk import (
-    core,
     aws_ecs as ecs,
     aws_logs as logs,
     aws_ec2 as ec2,
 #    aws_efs as efs,
     aws_ecs_patterns as ecs_patterns
 )
-
+import aws_cdk as cdk
+from constructs import Construct
 
 # TODO
 # 1. Remove the NAT gateways, and use Knowits own NAT gateway
 # 2. Persistent storage for the Docker-container (EFS) - look at the commented out code
 # 3. Delete the old AWS-code/stack on manual EC2-instance
 
-class ChromaDbFargateStack(core.Stack):
+class ChromaDbFargateStack(cdk.Stack):
 
-    def __init__(self, scope: core.Construct, id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
         # Create a new VPC

@@ -6,21 +6,23 @@ This application is designed to streamline the process of browsing and analyzing
 ## Installation
 
 1. **Clone the Repository**
-
+   ```
+      git clone https://github.com/knowit/cvhelper.git
+   ```
 2. **Set up the Environment**
    - Ensure Python 3.11 is installed (chromadb does [not work with 3.12](https://github.com/chroma-core/chroma/issues/1410) as we speak).
    - Install required dependencies:
-     \```
+     ```
      pip install -r requirements.txt
-     \```
+     ```
 
 3. **Configuration**
    - Set up your `config.json` with necessary API keys and settings.
 
 4. **Run the test-client***
-   \```
+   ```
    python app.py
-   \```
+   ```
 
 ## Contributing
 
