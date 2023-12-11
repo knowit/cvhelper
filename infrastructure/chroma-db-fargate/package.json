@@ -1,0 +1,19 @@
+{
+  "name": "chroma-db-fargate",
+  "version": "1.0.0",
+  "description": "## Useful commands",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-cdk": "^2.114.1",
+    "aws-cdk-lib": "^2.114.1"
+  }
+}
