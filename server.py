@@ -21,7 +21,10 @@ embeddings = GPT4AllEmbeddings()
 
 chroma_host = os.environ["CHROMA_HOST"]
 chroma_port = os.environ.get("CHROMA_PORT", "9000")
-chroma_client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
+chroma_ssl = os.environ.get("CHROMA_SSL", "false")
+
+#chroma_client = chromadb.HttpClient(host=chroma_host, port=chroma_port, ssl=True)
+chroma_client = chromadb.HttpClient(host="localhost", port=8000)
 vectorstore = Chroma(
     collection_name="cv_no_clean",
     embedding_function=embeddings,

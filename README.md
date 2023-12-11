@@ -19,9 +19,32 @@ This application is designed to streamline the process of browsing and analyzing
 3. **Configuration**
    - Set up your `config.json` with necessary API keys and settings.
 
-4. **Run the test-client***
+4. **Fire up the servers and a local chroma instance***
+
    ```
-   python app.py
+   python server.py
+   ```
+
+   ```
+   chroma run --path ~/chroma_db_path
+   ```
+
+   Run a local ollama-server
+   ```
+   ollama pull mistral
+   ollama serve
+   ```
+
+5. **Run the test-client***
+   ```
+   python client.py nnn@knowit.no "What projects has nnn worked on?"
+   ```
+
+## Populating chromadb vectorstore from cvpartner
+   Run the script to fetch all cv's and populate the vectorstore.
+   ```
+   cd vectorstore
+   python get_cv.py ~/Downloads/cvs
    ```
 
 ## Contributing
