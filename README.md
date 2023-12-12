@@ -17,7 +17,16 @@ This application is designed to streamline the process of browsing and analyzing
      ```
 
 3. **Configuration**
-   - Set up your `config.json` with necessary API keys and settings.
+   If you are changing the defaults, you need to set the following environment-variables. 
+   Defaults are set to local instances of Ollama, ChromaDB.
+   ```
+   export OLLAMA_URL="http://localhost:11434"
+   export OLLAMA_MODEL="mistral"
+   export CHROMA_HOST="localhost"
+   export CHROMA_PORT="8080"
+   export CVPARTNER_URL="https://knowit.cvpartner.com/api/v1/"
+   export CVPARTNER_TOKEN="XXXX"
+   ``````   
 
 4. **Fire up the servers and a local chroma instance***
 
@@ -57,13 +66,11 @@ We welcome contributions to this project. If you want to contribute, please foll
 - Open a pull request.
 
 ## License
-
 Apache 2.0
 
 ## Contact
+For support or any queries, reach out!
 
-For support or any queries, reach out to us!
-"""
 
 ### Links
 * [cvpartner API docs](https://docs.cvpartner.com/)

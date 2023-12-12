@@ -3,10 +3,11 @@ import os
 import sys
 from cvpartner_client import CVPartnerClient
 import json
-from langchain.embeddings import GPT4AllEmbeddings
 from langchain.vectorstores import Chroma
 import chromadb
 from split import CVSplitter
+from langchain.embeddings import GPT4AllEmbeddings
+
 
 
 def main():
@@ -18,9 +19,15 @@ def main():
     client = CVPartnerClient(token=token)
 
     # Download all CVs
-#    client.download_all_cvs(download_path)
-    client.download_cv("5b8fd663c86c13111ac8eb0f","5b8fd663c86c13111ac8eb10",download_path)
-    embed_and_insert(f"{download_path}/5b8fd663c86c13111ac8eb0f.json")
+    populate_vectordatabase(download_path)
+
+def populate_vectordatabase(directory):
+    for filename in os.listdir(directory):
+        full_filename = os.path.join(directory, filename)
+        print (full_filename)
+        if os.path.isfile(full_filename):
+            embed_and_insert(full_filename)
+
 
 def split_all_cvs(path: str):
     splitter = CVSplitter(lang="no")
