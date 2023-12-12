@@ -7,6 +7,7 @@ from aws_cdk import (
     aws_ecs_patterns as ecs_patterns
 )
 import aws_cdk as cdk
+import os
 from constructs import Construct
 
 # TODO
@@ -19,10 +20,11 @@ class ChromaDbFargateStack(cdk.Stack):
     def __init__(self, scope: Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-        # Create a new VPC
-        vpc = ec2.Vpc(self, "ChromaDBVPC", max_azs=3)
+#        # Create a VPC from OsloVPC
+        vpc = ec2.Vpc.from_lookup(self, "OsloVPC", vpc_id="vpc-54c1073c")
+
         # Create a security group for EFS
-#        efs_security_group = ec2.SecurityGroup(
+        # efs_security_group = ec2.SecurityGroup(
 #            self, "EfsSecurityGroup",
 #            vpc=vpc,
 #            description="Security Group for EFS",
@@ -102,5 +104,20 @@ class ChromaDbFargateStack(cdk.Stack):
 #       )
 
 app = App()
-ChromaDbFargateStack(app, "ChromaDbFargateStack")
+ChromaDbFargateStack(app, "ChromaDbFargateStack",
+    # If you don't specify 'env', this stack will be environment-agnostic.
+    # Account/Region-dependent features and context lookups will not work,
+    # but a single synthesized template can be deployed anywhere.
+
+    # Uncomment the next line to specialize this stack for the AWS Account
+    # and Region that are implied by the current CLI configuration.
+    env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
+    # Uncomment the next line if you know exactly what Account and Region you
+    # want to deploy the stack to. */
+
+    #env=cdk.Environment(account='123456789012', region='us-east-1'),
+
+    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
+    )
+
 app.synth()
