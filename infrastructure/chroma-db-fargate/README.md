@@ -1,5 +1,7 @@
 
-# CDK infrastructure as code for cvhelper (Fargate on AWS)
+# CDK infrastructure as code for chromadb (Fargate on AWS)
+
+Simple stack to run chromadb on AWS in Fargate
 
 ## Useful commands
 
