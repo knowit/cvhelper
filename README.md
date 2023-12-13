@@ -10,10 +10,12 @@ This application is designed to streamline the process of browsing and analyzing
       git clone https://github.com/knowit/cvhelper.git
    ```
 2. **Set up the Environment**
-   - Ensure Python 3.11 is installed (chromadb does [not work with 3.12](https://github.com/chroma-core/chroma/issues/1410) as we speak).
+   - Install [poetry](https://python-poetry.org/).
+   Using Python 3.11(chromadb does [not work with 3.12](https://github.com/chroma-core/chroma/issues/1410) as we speak).
    - Install required dependencies:
      ```
-     pip install -r requirements.txt
+     poetry env use python3.11
+     poetry install --no-root
      ```
 
 3. **Configuration**
@@ -31,11 +33,11 @@ This application is designed to streamline the process of browsing and analyzing
 4. **Fire up the servers and a local chroma instance***
 
    ```
-   python server.py
+   poetry run python server.py
    ```
 
    ```
-   chroma run --path ~/chroma_db_path
+   poetry run chroma run --path ~/chroma_db_path
    ```
 
    Run a local ollama-server
@@ -46,14 +48,14 @@ This application is designed to streamline the process of browsing and analyzing
 
 5. **Run the test-client***
    ```
-   python client.py nnn@knowit.no "What projects has nnn worked on?"
+   poetry run python client.py nnn@knowit.no "What projects has nnn worked on?"
    ```
 
 ## Populating chromadb vectorstore from cvpartner
    Run the script to fetch all cv's and populate the vectorstore.
    ```
    cd vectorstore
-   python get_cv.py ~/Downloads/cvs
+   poetry run python get_cv.py ~/Downloads/cvs
    ```
 
 ## Contributing
