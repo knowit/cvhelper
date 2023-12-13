@@ -1,6 +1,13 @@
 
 # CDK infrastructure as code for chromadb (Fargate on AWS)
 
+Preliminary solution, just a skeleton.
+
+## TODO
+- [ ] Authentication
+- [ ] SSL-support (API gateway or similar)
+- [ ] Persistence (EFS)
+
 Simple stack to run chromadb on AWS in Fargate
 
 ## Useful commands
