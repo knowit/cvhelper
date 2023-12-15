@@ -8,7 +8,7 @@ The expected output should be a list of document chunks with attached metadata.
 """
 
 from typing import Iterable, Any
-
+from itertools import chain
 
 class CVSplitter:
     """Load CVs from a directory and divide content into chunks."""
@@ -74,7 +74,13 @@ class CVSplitter:
                 "category": "project_experience",
             }
 
-
+    def get_all_splits(self, cv):
+        global_metas = self.get_global_metadata(cv)
+        return chain(
+            self.get_project_experiences(cv, global_metas),
+            self.get_work_experiences(cv, global_metas),
+        )
+    
     def get_work_experiences(self, cv, global_meta) -> Iterable[str]:
         """Return work experiences as chunks with attached metadata."""
         for experience in cv["work_experiences"]:
