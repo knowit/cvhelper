@@ -12,17 +12,19 @@ from langserve import add_routes
 
 from cvpartner_qa import CVPartnerQA
 
-ollama_url = os.environ.get("OLLAMA_URL", 'http://localhost:11434')
-ollama_model = os.environ.get("OLLAMA_MODEL", 'mistral')
-ollama = Ollama(base_url=ollama_url, model=ollama_model)
+from settings import settings
+
+ollama = Ollama(base_url=settings.ollama_url, model=settings.ollama_model)
 
 embeddings = GPT4AllEmbeddings()
 
 chroma_host = os.environ.get("CHROMA_HOST", "localhost")
 chroma_port = os.environ.get("CHROMA_PORT", "8000")
 
-#chroma_client = chromadb.HttpClient(host=chroma_host, port=chroma_port, ssl=True)
-chroma_client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
+# chroma_client = chromadb.HttpClient(host=chroma_host, port=chroma_port, ssl=True)
+chroma_client = chromadb.HttpClient(
+    host=settings.chroma_host, port=settings.chroma_port
+)
 vectorstore = Chroma(
     collection_name="cv_no_clean",
     embedding_function=embeddings,
