@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     cvpartner_token: str = Field(
         alias="CVPARTNER_TOKEN", description="Token for the CV Partner API."
     )
+    cvhelper_host: str = "localhost"
+    cvhelper_port: str = "3000"
 
 
 settings = Settings()
