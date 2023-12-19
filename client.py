@@ -6,13 +6,16 @@ The script should be run with two arguments:
 """
 
 from langserve import RemoteRunnable
+from settings import settings
 import sys
 
 email = sys.argv[1]
 prompt = sys.argv[2]
 
 host = "localhost"
-cv_ai = RemoteRunnable(f"http://{host}:3000/cv-helper")
+cv_ai = RemoteRunnable(
+    f"http://{settings.cvhelper_host}:{settings.cvhelper_port}/cv-helper"
+)
 
 res = cv_ai.invoke(
     {

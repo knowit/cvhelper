@@ -19,16 +19,13 @@ This application is designed to streamline the process of browsing and analyzing
      ```
 
 3. **Configuration**
-   If you are changing the defaults, you need to set the following environment-variables. 
-   Defaults are set to local instances of Ollama, ChromaDB.
+   In order to get CVs from the CV Partner API you need to have the cvpartner token as an environment variable: 
    ```
-   export OLLAMA_URL="http://localhost:11434"
-   export OLLAMA_MODEL="mistral"
-   export CHROMA_HOST="localhost"
-   export CHROMA_PORT="8080"
-   export CVPARTNER_URL="https://knowit.cvpartner.com/api/v1/"
    export CVPARTNER_TOKEN="XXXX"
-   ``````   
+   ``` 
+
+   Settings for the vectorstore and the LLM are in the `settings.py` file. Defaults are set to local instances of Ollama, ChromaDB. These settings can also be overridden by environment variables.
+ 
 
 4. **Fire up the servers and a local chroma instance***
 
