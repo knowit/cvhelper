@@ -18,10 +18,6 @@ ollama = Ollama(base_url=settings.ollama_url, model=settings.ollama_model)
 
 embeddings = GPT4AllEmbeddings()
 
-chroma_host = os.environ.get("CHROMA_HOST", "localhost")
-chroma_port = os.environ.get("CHROMA_PORT", "8000")
-
-# chroma_client = chromadb.HttpClient(host=chroma_host, port=chroma_port, ssl=True)
 chroma_client = chromadb.HttpClient(
     host=settings.chroma_host, port=settings.chroma_port
 )
